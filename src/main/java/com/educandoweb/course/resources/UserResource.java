@@ -12,7 +12,7 @@ import com.educandoweb.course.entities.User;
 public class UserResource {
 
 	//ResponseEntity retorna requisição web
-	@GetMapping       //pra informar que esse metodo responde a uma requisição do http
+	@GetMapping       //pra informar que esse metodo responde a requisição get do http
 	public ResponseEntity<User> findAll(){
 		     
 		User u = new User(1L, "Maria", "maria@gmail.com", "99999999", "12345");

@@ -2,10 +2,19 @@ package com.educandoweb.course.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+// Entity, anotation do jpa, instrui o jpa como ele vai converter os objetos para o modelo relacional
+@Entity
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id  // informa quem sera a chave primaria
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // informa que sera autoincremet
 	private Long id;
 	private String name;
 	private String email;
