@@ -28,7 +28,7 @@ public class User implements Serializable{
 	private String phone;
 	private String password;
 	
-	@JsonIgnore
+	@JsonIgnore // jsonIgnore evita das classes user e order entrar em um loop infinito
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
 	
