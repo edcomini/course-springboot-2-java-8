@@ -9,24 +9,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
 
 @Entity
-public class Order implements Serializable{
-	
+@Table(name = "tb_order")
+public class Order implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	@Id  // informa quem sera a chave primaria
+
+	@Id // informa quem sera a chave primaria
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // informa que sera autoincremet
 	private Long Id;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
-	
-	@ManyToOne 
-	@JoinColumn(name = "client_id")  // configura a chave entrageira entre as tabelas user e order  
+
+	@ManyToOne
+	@JoinColumn(name = "client_id") // configura a chave entrageira entre as tabelas user e order
 	private User client;
-	
+
 	public Order() {
-		
+
 	}
 
 	public Order(Long id, Instant moment, User client) {
@@ -85,5 +92,4 @@ public class Order implements Serializable{
 		return true;
 	}
 
-	
 }
